@@ -107,6 +107,8 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
             <input
               type="email"
               placeholder="Enter your email"
+              inputMode="email"
+              autoComplete="email"
               className="flex-1 px-6 py-4 rounded-sm bg-[#F5F2EB]/5 border border-[#F5F2EB]/20 text-[#F5F2EB] placeholder-[#A8A29E] focus:outline-none focus:border-[#F5F2EB]/50 transition-colors"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -229,4 +231,3 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
 };
 
 export default Hero;
-

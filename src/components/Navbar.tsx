@@ -28,6 +28,27 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, onWaitlistClick }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileMenuOpen]);
+
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string,
@@ -63,6 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, onWaitlistClick }) => {
   return (
     <>
       <nav
+        aria-label="Primary"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out border-b border-[#2C2A26]/5 ${
           scrolled || mobileMenuOpen
             ? "bg-[#F5F2EB]/90 backdrop-blur-md py-4 shadow-sm"
@@ -116,11 +138,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, onWaitlistClick }) => {
               className={`block focus:outline-none transition-colors duration-500 ${textColorClass}`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
+              aria-controls="mobile-menu"
+              aria-expanded={mobileMenuOpen}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
-              {mobileMenuOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+               {mobileMenuOpen ? (
+                 <svg
+                   xmlns="http://www.w3.org/2000/svg"
+                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
@@ -154,6 +179,10 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, onWaitlistClick }) => {
       </nav>
 
       <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!mobileMenuOpen}
         className={`fixed inset-0 bg-[#F5F2EB] z-40 flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${
           mobileMenuOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
@@ -189,4 +218,3 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, onWaitlistClick }) => {
 };
 
 export default Navbar;
-
