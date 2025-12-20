@@ -17,6 +17,7 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
   const [email, setEmail] = useState("");
   const [resolved, setResolved] = useState(false);
   const [exampleIndex, setExampleIndex] = useState(0);
+  const [showFollowUp, setShowFollowUp] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,6 +31,19 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
     }, 7000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (!resolved) {
+      setShowFollowUp(false);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setShowFollowUp(true);
+    }, 1600);
+
+    return () => clearTimeout(timer);
+  }, [resolved, exampleIndex]);
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -129,7 +143,7 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
 
         <div className="order-1 lg:order-2 relative flex justify-center items-center h-[520px] lg:h-[740px] animate-fade-in-up animate-delay-200">
           <div
-            className="w-[320px] bg-gradient-to-b from-[#1f1d1b] via-[#191816] to-[#0f0e0d] border border-[#3E3C38] rounded-[28px] p-4 shadow-[0_25px_50px_rgba(0,0,0,0.45)] relative overflow-hidden ring-1 ring-white/10 min-h-[520px] lg:min-h-[680px]"
+            className="w-[360px] sm:w-[380px] lg:w-[420px] bg-gradient-to-b from-[#1f1d1b] via-[#191816] to-[#0f0e0d] border border-[#3E3C38] rounded-[28px] p-4 shadow-[0_25px_50px_rgba(0,0,0,0.45)] relative overflow-hidden ring-1 ring-white/10 min-h-[520px] lg:min-h-[680px]"
             style={{
               boxShadow:
                 "0 25px 50px rgba(0,0,0,0.45), inset 0 1px 8px rgba(255,255,255,0.06), inset 0 -2px 16px rgba(0,0,0,0.45)",
@@ -186,7 +200,7 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
                     </span>
                   </div>
                 </div>
-                {resolved && currentExample.opponentFollowUp && (
+                {showFollowUp && currentExample.opponentFollowUp && (
                   <div className="flex gap-2 w-full pt-2">
                     <div className="w-8 h-8 rounded-full bg-[#3E3C38] shrink-0 mt-2" />
                     <div className="bg-[#2C2A26] p-3 rounded-2xl rounded-tl-none text-sm text-[#A8A29E] leading-relaxed border border-[#3E3C38] max-w-[80%]">
@@ -194,7 +208,7 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
                     </div>
                   </div>
                 )}
-                {resolved && currentExample.userSecondResponse && (
+                {showFollowUp && currentExample.userSecondResponse && (
                   <div className="flex flex-col items-end w-full pt-2 space-y-1">
                     <div className="bg-[#F5F2EB] p-3 rounded-2xl rounded-tr-none text-sm text-[#2C2A26] leading-relaxed max-w-[90%] ml-auto shadow-lg">
                       {currentExample.userSecondResponse}
