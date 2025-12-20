@@ -19,7 +19,7 @@ export const DEMO_EXAMPLES: DemoExample[] = [
     response:
       "Per our lease agreement, the deposit must be returned within 30 days. I have documented the move-out condition. Please remit payment to avoid legal escalation.",
     highRiskResponse:
-      "I'm coming to see you and I want to see my deposit in cash on the table.",
+      "I'm coming to see you and my deposit better be sitting on the table.",
   },
   {
     mode: "Peacekeeper",
@@ -50,8 +50,8 @@ export const DEMO_EXAMPLES: DemoExample[] = [
     response:
       "That space is assigned to my unit per the lease/HOA allocation. If you believe otherwise, please share the written allocation and I'll verify - until then, please stop making towing threats.",
     highRiskResponse:
-      "Touch my car, and then you and I are going to have a problem.",
-    opponentFollowUp: "Tow truck is scheduled this week if you ignore this.",
+      "Touch my car, and then I am going to park my fist down your throat.",
+    opponentFollowUp: "The Tow truck is scheduled this week if you ignore this.",
     userSecondResponse:
       "I've documented the assigned space and will involve property management if towing is attempted. Please cancel any tow request and share your allocation proof; otherwise, you'll be responsible for wrongful towing costs.",
     followUpMode: "Defense",
