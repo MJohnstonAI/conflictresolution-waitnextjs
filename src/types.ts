@@ -33,6 +33,7 @@ export interface DemoExample {
   mode: DemoMode;
   conflict: string;
   response: string;
+  highRiskResponse: string;
   opponentFollowUp?: string;
   userSecondResponse?: string;
   followUpMode?: DemoMode;

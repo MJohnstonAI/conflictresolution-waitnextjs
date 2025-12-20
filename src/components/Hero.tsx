@@ -61,7 +61,8 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
   };
 
   const currentExample = DEMO_EXAMPLES[exampleIndex % DEMO_EXAMPLES.length];
-  const reactiveReply =
+  const highRiskReply =
+    currentExample.highRiskResponse ??
     "Are you kidding me? This is ridiculous. I'm done with this.";
   const followUpMode = currentExample.followUpMode || currentExample.mode;
 
@@ -161,10 +162,10 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
                   }`}
                 >
                   <div className="bg-red-900/20 border border-red-900/30 p-3 rounded-2xl rounded-tr-none text-sm text-red-400 leading-relaxed max-w-[80%] ml-auto">
-                    {reactiveReply}
+                    {highRiskReply}
                   </div>
                   <span className="text-xs text-red-500/70 mt-1 block text-right font-medium">
-                    High Legal Risk
+                    WRONG - High Risk
                   </span>
                 </div>
 
