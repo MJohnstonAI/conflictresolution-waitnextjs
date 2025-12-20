@@ -60,7 +60,7 @@ export default function TwitterImage() {
             fontFamily: "sans-serif",
           }}
         >
-          Texts • Emails • Disputes
+          Texts / Emails / Disputes
         </div>
       </div>
     ),

@@ -60,7 +60,7 @@ export default function OpengraphImage() {
             fontFamily: "sans-serif",
           }}
         >
-          Peacekeeper • Barrister • Defense
+          Peacekeeper / Barrister / Defense
         </div>
       </div>
     ),

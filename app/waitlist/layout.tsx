@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://conflictresolution-waitnextjs.vercel.app";
+  "https://conflictresolution.solutions";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Waitlist",
   description:
-    "Join the early-access waitlist. We’ll email you as soon as Conflict Resolution opens.",
+    "Join the early-access waitlist. We'll email you as soon as Conflict Resolution opens.",
   alternates: {
     canonical: "/waitlist",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Conflict Resolution",
     title: "Waitlist | Conflict Resolution",
     description:
-      "Join the early-access waitlist. We’ll email you as soon as Conflict Resolution opens.",
+      "Join the early-access waitlist. We'll email you as soon as Conflict Resolution opens.",
     images: [
       {
         url: "/opengraph-image",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Waitlist | Conflict Resolution",
     description:
-      "Join the early-access waitlist. We’ll email you as soon as Conflict Resolution opens.",
+      "Join the early-access waitlist. We'll email you as soon as Conflict Resolution opens.",
     images: ["/twitter-image"],
   },
 };

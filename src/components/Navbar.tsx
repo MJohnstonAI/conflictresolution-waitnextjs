@@ -61,8 +61,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, onWaitlistClick }) => {
     e: React.MouseEvent<HTMLAnchorElement>,
   ) => {
     setMobileMenuOpen(false);
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag("event", "click_priority_access", {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "click_priority_access", {
         event_category: "navigation",
         event_label: "navbar_button",
       });

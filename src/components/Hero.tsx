@@ -60,8 +60,8 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
   };
 
   const handleJoinListClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag("event", "click_join_list", {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "click_join_list", {
         event_category: "conversion",
         event_label: "hero_cta",
         value: email ? 1 : 0,

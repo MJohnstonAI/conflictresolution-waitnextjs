@@ -4,7 +4,7 @@ import "./globals.css";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://conflictresolution-waitnextjs.vercel.app";
+  "https://conflictresolution.solutions";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -77,7 +77,6 @@ export default function RootLayout({
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}

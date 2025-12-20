@@ -5,7 +5,8 @@
 
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
+import React from "react";
 
 interface FooterProps {
   onLinkClick: (
@@ -16,27 +17,22 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onLinkClick, onWaitlistClick }) => {
-  const [currentUrl, setCurrentUrl] = useState("");
+  const pathname = usePathname();
+  const siteUrl = "https://conflictresolution.solutions";
+  const currentUrl = `${siteUrl}${pathname ?? ""}`;
   const shareText =
     "Check out Conflict Resolution - AI Mediation for Texts and Emails.";
-
-  useEffect(() => {
-    setCurrentUrl(window.location.href);
-  }, []);
-
-  const shareLinks = useMemo(() => {
-    return {
-      twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(
-        shareText,
-      )}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-        currentUrl,
-      )}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        currentUrl,
-      )}`,
-    };
-  }, [currentUrl, shareText]);
+  const shareLinks = {
+    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(
+      shareText,
+    )}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      currentUrl,
+    )}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      currentUrl,
+    )}`,
+  };
 
   return (
     <footer className="bg-[#EBE7DE] pt-24 pb-12 px-6 text-[#5D5A53] border-t border-[#D6D1C7]">
