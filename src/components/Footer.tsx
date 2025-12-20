@@ -20,6 +20,7 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick, onWaitlistClick }) => {
   const pathname = usePathname();
   const siteUrl = "https://conflictresolution.solutions";
   const currentUrl = `${siteUrl}${pathname ?? ""}`;
+  const buildVersion = process.env.NEXT_PUBLIC_BUILD_VERSION ?? "v1.2";
   const shareText =
     "Check out Conflict Resolution - AI Mediation for Texts and Emails.";
   const shareLinks = {
@@ -162,7 +163,7 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick, onWaitlistClick }) => {
 
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-[#D6D1C7] flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-widest text-[#6B665E]">
         <p>&copy; 2025 NeuroSyncTeam AI Dynamics. All rights reserved.</p>
-        <div className="h-4" />
+        <p className="mt-3 md:mt-0">Build {buildVersion}</p>
       </div>
     </footer>
   );
