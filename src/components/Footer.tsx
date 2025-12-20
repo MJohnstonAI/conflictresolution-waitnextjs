@@ -91,6 +91,35 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick, onWaitlistClick }) => {
               </a>
             </li>
           </ul>
+          <h4 className="font-bold text-[#2C2A26] mt-8 mb-6 tracking-wide text-xs uppercase">
+            Resources
+          </h4>
+          <ul className="space-y-4 font-light text-sm">
+            <li>
+              <a
+                href="/resources/consultation-prep"
+                className="hover:text-[#2C2A26] transition-colors"
+              >
+                Consultation Prep
+              </a>
+            </li>
+            <li>
+              <a
+                href="/resources/academic-access"
+                className="hover:text-[#2C2A26] transition-colors"
+              >
+                Academic Access
+              </a>
+            </li>
+            <li>
+              <a
+                href="/resources/clinical-toolkit"
+                className="hover:text-[#2C2A26] transition-colors"
+              >
+                Clinical Toolkit
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div className="md:col-span-3">
