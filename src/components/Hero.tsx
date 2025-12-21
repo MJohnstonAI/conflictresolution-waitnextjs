@@ -9,12 +9,10 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { DEMO_EXAMPLES } from "../constants";
 
-interface HeroProps {
-  onWaitlistClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-}
+const GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfmAWXigJGtDZq5WsQyTq0LO4romkyPwGwFyLTq1RMDQzmHag/viewform";
 
-const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
-  const [email, setEmail] = useState("");
+const Hero: React.FC = () => {
   const [resolved, setResolved] = useState(false);
   const [exampleIndex, setExampleIndex] = useState(0);
   const [showFollowUp, setShowFollowUp] = useState(false);
@@ -45,32 +43,12 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
     return () => clearTimeout(timer);
   }, [resolved, exampleIndex]);
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string,
-  ) => {
-    e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) {
-      const headerOffset = 85;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
-  };
-
-  const handleJoinListClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handlePriorityAccessClick = () => {
     if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "click_join_list", {
+      window.gtag("event", "click_priority_access", {
         event_category: "conversion",
         event_label: "hero_cta",
-        value: email ? 1 : 0,
       });
-    }
-    if (onWaitlistClick) {
-      onWaitlistClick(e);
-    } else {
-      handleNavClick(e, "waitlist");
     }
   };
 
@@ -118,22 +96,13 @@ const Hero: React.FC<HeroProps> = ({ onWaitlistClick }) => {
             Defense.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto lg:mx-0">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              inputMode="email"
-              autoComplete="email"
-              className="flex-1 px-6 py-4 rounded-sm bg-[#F5F2EB]/5 border border-[#F5F2EB]/20 text-[#F5F2EB] placeholder-[#A8A29E] focus:outline-none focus:border-[#F5F2EB]/50 transition-colors"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <div className="max-w-md mx-auto lg:mx-0">
             <a
-              href="/waitlist"
-              onClick={handleJoinListClick}
-              className="px-8 py-4 bg-[#F5F2EB] text-[#2C2A26] font-bold uppercase tracking-widest text-sm rounded-sm hover:bg-[#D6D1C7] transition-colors whitespace-nowrap flex items-center justify-center"
+              href={GOOGLE_FORM_URL}
+              onClick={handlePriorityAccessClick}
+              className="inline-flex items-center justify-center px-10 py-4 bg-[#F5F2EB] text-[#2C2A26] font-bold uppercase tracking-widest text-sm rounded-sm hover:bg-[#D6D1C7] transition-colors whitespace-nowrap w-full sm:w-auto"
             >
-              Join List
+              Join Priority Access
             </a>
           </div>
           <p className="mt-4 text-sm text-[#A8A29E] font-medium tracking-wide">

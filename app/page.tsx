@@ -13,7 +13,7 @@ export default function HomePage() {
 
   return (
     <PageFrame onNavClick={handleNavClick} onWaitlistClick={handleWaitlistClick}>
-      <Hero onWaitlistClick={handleWaitlistClick} />
+      <Hero />
       <Modes />
       <About />
       <HowItWorks />
